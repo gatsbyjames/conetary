@@ -30,7 +30,7 @@ function Header() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             {/* <Route render={({ history }) => <SearchBox history={history} />} /> */}
-            <Nav className="me-auto">
+            <Nav className="ml-auto">
               <LinkContainer to="/price">
                 <Nav.Link>
                   <i class="fa-brands fa-bitcoin"></i>coin
