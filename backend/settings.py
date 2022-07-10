@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-)ps@%-^&^v6=03wd7qq5^*0h850$gh+b_!@r$23@ao4%)t#0ii
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -102,9 +102,7 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, 'frontend/build')
-        ], # 얘 나중에 react 하고 연결할 떄 쓸 예정
+        'DIRS': [BASE_DIR / 'frontend/build'], # 얘 나중에 react 하고 연결할 떄 쓸 예정
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -165,13 +163,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 # 얘가 미디어 파일 URL 정하는 코드
 
-STATICFIELS_DIRS = [
-    BASE_DIR / 'static',
-    BASE_DIR / 'frontend/build/static' 
+STATICFILES_DIRS = [
+    BASE_DIR / 'frontend/build/static'
+
     # 이건 프론트 엔드 build 할떄 쓸듯
 
 ]
