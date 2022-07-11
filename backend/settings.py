@@ -15,6 +15,8 @@ from pathlib import Path
 from datetime import timedelta
 import os
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)ps@%-^&^v6=03wd7qq5^*0h850$gh+b_!@r$23@ao4%)t#0ii'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -42,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'base',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -173,7 +176,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = '/staticfiles/'
+STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 # 얘가 미디어 파일 URL 정하는 코드
 
@@ -199,6 +202,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
 #  얘가 접근 허락 해주는 애
+
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+AWS_QUERYSTRING_AUTH = False
+AWS_S3_REGION_NAME= "ap-northeast-2"
+AWS_ACCESS_KEY_ID = "AKIAYYLU3IMX4E2K6Q6P"
+AWS_SECRET_ACCESS_KEY = "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"
+AWS_STORAGE_BUCKET_NAME = "conetary-bucket"
+
+
 
 
 # if os.getcwd() == '/app':
