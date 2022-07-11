@@ -75,7 +75,7 @@ function ProductScreen() {
 
   return (
     <div>
-      <Link to="/" className="btn btn-light">
+      <Link to="/" className="btn btn-light my-3">
         Go Back
       </Link>
       {loading ? (
@@ -86,7 +86,7 @@ function ProductScreen() {
         <div>
           <Row>
             <Col md={6}>
-              <Image src={product.image} alt={product.name} />
+              <Image src={product.image} alt={product.name} fluid />
             </Col>
 
             <Col md={3}>
@@ -98,15 +98,15 @@ function ProductScreen() {
                 <ListGroup.Item>
                   <Rating
                     value={product.rating}
-                    text={`${product.numReviews} reviews`}
+                    text={`${product.numReviews} 리뷰`}
                     color={"#f8e825"}
                   />
                 </ListGroup.Item>
 
-                <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
+                <ListGroup.Item>상품 가격: ${product.price}</ListGroup.Item>
 
                 <ListGroup.Item>
-                  Description: ${product.description}
+                  제품 설명: {product.description}
                 </ListGroup.Item>
               </ListGroup>
             </Col>
@@ -116,15 +116,17 @@ function ProductScreen() {
                 <ListGroup variant="flush">
                   <ListGroup.Item>
                     <Row>
-                      <Col>Prices:</Col>
-                      <Col>${product.price}</Col>
+                      <Col>총 가격:</Col>
+                      <Col>
+                        <strong>${product.price}</strong>
+                      </Col>
                     </Row>
                   </ListGroup.Item>
                   <ListGroup.Item>
                     <Row>
-                      <Col>Status:</Col>
+                      <Col>재고:</Col>
                       <Col>
-                        {product.countInStock > 0 ? "In stock" : "Out of Stock"}
+                        {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
                       </Col>
                     </Row>
                   </ListGroup.Item>
@@ -147,7 +149,6 @@ function ProductScreen() {
                               )
                             )}
                           </Form.Control>
-                          {/* 얘가 수량 설정 코드 Form */}
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -178,9 +179,10 @@ function ProductScreen() {
               <ListGroup variant="flush">
                 {product.reviews.map((review) => (
                   <ListGroup.Item key={review._id}>
-                    {review.name}
+                    <strong>{review.name}</strong>
                     <Rating value={review.rating} color="#f8e825" />
-                    {/* <p>{review.createdAt.substring(0, 10)}</p>  substring 을 못 읽네*/}
+                    {/* <p>{review.createdAt.substring(0, 10)}</p> */}
+                    <p>{review.createdAt}</p>
                     <p>{review.comment}</p>
                   </ListGroup.Item>
                 ))}
@@ -223,6 +225,7 @@ function ProductScreen() {
                           onChange={(e) => setComment(e.target.value)}
                         ></Form.Control>
                       </Form.Group>
+
                       <Button
                         disabled={loadingProductReview}
                         type="submit"
@@ -232,7 +235,7 @@ function ProductScreen() {
                       </Button>
                     </Form>
                   ) : (
-                    <Message>
+                    <Message variant="info">
                       Please <Link to="/login">login</Link> to write a review
                     </Message>
                   )}
