@@ -133,7 +133,7 @@ DATABASES = {
         'USER': DB_USER,
         'PASSWORD': DB_PASSWORD,
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': '5432',
     }
 }
 
@@ -177,7 +177,8 @@ MEDIA_URL = '/images/'
 # 얘가 미디어 파일 URL 정하는 코드
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'frontend/build/static'
+    BASE_DIR / 'frontend/build/static',
+    BASE_DIR / 'static'
 
     # 이건 프론트 엔드 build 할떄 쓸듯
 
