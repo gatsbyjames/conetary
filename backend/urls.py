@@ -16,7 +16,8 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html')), #프론트 엔드 연결
     path('api/products/',include('base.urls.product_urls')),
     path('api/users/',include('base.urls.user_urls')),
-    path('api/orders/',include('base.urls.order_urls'))
+    path('api/orders/',include('base.urls.order_urls')),
+    path('api/news/', include('news.urls'))
 ]
 
 

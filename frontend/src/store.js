@@ -30,6 +30,8 @@ import {
   orderDeliverReducer,
 } from "./reducers/orderReducers";
 
+import { newsReducer } from "./reducers/newsReducers";
+
 const cartItemFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
   : [];
@@ -78,6 +80,8 @@ const reducer = {
   orderListMy: orderListMyReducer,
   orderList: orderListReducer,
   orderDeliver: orderDeliverReducer,
+
+  newsList: newsReducer,
 };
 
 export default configureStore({
