@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 def updateUser(sender, instance, **kwargs):
     user = instance
-    if user.email != '':
-        user.username = user.email
+    if user.first_name != '':
+        user.username = user.first_name
 
 pre_save.connect(updateUser, sender=User)

@@ -23,6 +23,9 @@ import OrderScreen from "./screens/mallScreens/OrderScreen";
 import OrderListScreen from "./screens/mallScreens/OrderListScreen";
 import MallScreen from "./screens/mallScreens/MallScreen";
 import NewsScreen from "./screens/news/NewsScreen";
+import CoinNewsScreen from "./screens/news/CoinNewsScreen";
+import CoinNewsDetailScreen from "./screens/news/CoinNewsDetailScreen";
+import NewsWrtieScreen from "./screens/news/NewsWriteScreen";
 
 function App() {
   return (
@@ -41,6 +44,9 @@ function App() {
             <Route path="/register" element={<RegisterScreen />} />
             <Route path="/profile" element={<ProfileScreen />} />
             <Route path="/news" element={<NewsScreen />} />
+            <Route path="/news/coin" element={<CoinNewsScreen />} />
+            <Route path="/news/coin/:id" element={<CoinNewsDetailScreen />} />
+            <Route path="/news/coin/write" element={<NewsWrtieScreen />} />
             <Route path="/price" element={<PriceScreen />} />
             <Route path="/price/:id" element={<PriceDetailScreen />} />
             <Route path="/shipping" element={<ShippingScreen />} />

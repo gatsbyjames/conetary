@@ -30,7 +30,11 @@ import {
   orderDeliverReducer,
 } from "./reducers/orderReducers";
 
-import { newsReducer } from "./reducers/newsReducers";
+import {
+  coinNewsReducer,
+  newsReducer,
+  newsCreateReducer,
+} from "./reducers/newsReducers";
 
 const cartItemFromStorage = localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems"))
@@ -82,6 +86,8 @@ const reducer = {
   orderDeliver: orderDeliverReducer,
 
   newsList: newsReducer,
+  coinNewsDetail: coinNewsReducer,
+  newsCreate: newsCreateReducer,
 };
 
 export default configureStore({

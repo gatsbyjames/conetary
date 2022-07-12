@@ -13,3 +13,23 @@ def news_list(request):
   serializer = NewsSerializer(news, many=True)
   return Response(serializer.data)
 
+
+@api_view(['GET'])
+def news_detail(request, pk):
+    
+    product = News.objects.get(id=pk)
+    serializer = NewsSerializer(product, many=False)
+    return Response(serializer.data)
+
+
+@api_view(['POST'])
+def create_news(request):
+  data = request.data
+  news = News.objects.create(
+    subject= data['subject'],
+    content= data['content'],
+  )
+  serializer = NewsSerializer(news, many=False)
+  return Response(serializer.data)
+
+
