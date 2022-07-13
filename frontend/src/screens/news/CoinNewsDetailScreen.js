@@ -1,22 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { listNews, listNewsCoinDetail } from "../../actions/newsActions";
+import {
+  deleteNews,
+  listNews,
+  listNewsCoinDetail,
+} from "../../actions/newsActions";
 import { LinkContainer } from "react-router-bootstrap";
 
 import { Row, Col, Button, ListGroup, Table } from "react-bootstrap";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function CoinNewsDetailScreen() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const coinNewsDetail = useSelector((state) => state.coinNewsDetail);
-  const { laoding, error, news } = coinNewsDetail;
+  const newsDetail = useSelector((state) => state.newsDetail);
+  const { laoding, error, news } = newsDetail;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(listNewsCoinDetail(id));
   }, []);
+
+  const updateHandler = (id) => {
+    navigate(`/news/coin/update/${id}`);
+  };
+
+  const deleteHandler = (id) => {
+    dispatch(deleteNews(id));
+    navigate("/news/coin");
+  };
 
   return (
     <div>
@@ -38,6 +53,8 @@ function CoinNewsDetailScreen() {
           ))}
         </Col>
       </Row>
+      <Button onClick={() => updateHandler(id)}>수정</Button>
+      <Button onClick={() => deleteHandler(id)}>삭제</Button>
     </div>
   );
 }

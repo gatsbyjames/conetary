@@ -7,7 +7,7 @@ import { Row, Col, Button, ListGroup, Table } from "react-bootstrap";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
 
-function NewListScreen() {
+function StockNewsScreen() {
   const dispatch = useDispatch();
   const newsList = useSelector((state) => state.newsList);
   const { laoding, error, news } = newsList;
@@ -26,7 +26,7 @@ function NewListScreen() {
       <Row>
         <Col>
           <LinkContainer to={"/news/coin"} style={{ cursor: "pointer" }}>
-            <h1>코인 뉴스</h1>
+            <h1>주식 뉴스</h1>
           </LinkContainer>
         </Col>
         <Col>
@@ -54,7 +54,7 @@ function NewListScreen() {
             {news
               ?.reverse()
               .slice(0, 25)
-              .filter((item) => item.category == "코인")
+              .filter((item) => item.category == "주식")
               .map((item) => (
                 <LinkContainer
                   to={`/news/coin/${item.id}`}
@@ -80,4 +80,4 @@ function NewListScreen() {
   );
 }
 
-export default NewListScreen;
+export default StockNewsScreen;

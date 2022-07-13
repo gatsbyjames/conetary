@@ -28,8 +28,39 @@ def create_news(request):
   news = News.objects.create(
     subject= data['subject'],
     content= data['content'],
+    category= data['category']
   )
   serializer = NewsSerializer(news, many=False)
   return Response(serializer.data)
 
 
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def update_news(request, pk):
+
+  news = News.objects.get(id=pk)
+
+  data =request.data
+
+  news.subject = data['subject']
+  news.content = data['content']
+
+  news.save()
+
+  serializer = NewsSerializer(news, many=False)
+
+  return Response(serializer.data)
+
+
+@api_view(['DELETE'])
+@permission_classes([IsAuthenticated])
+def delete_news(request, pk):
+
+  news = News.objects.get(id=pk)
+
+  news.delete()
+
+  return Response("News was deleted")
+
+
+  

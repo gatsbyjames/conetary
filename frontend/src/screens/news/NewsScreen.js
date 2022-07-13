@@ -25,89 +25,97 @@ function NewsScreen() {
             <h1>코인 뉴스</h1>
           </LinkContainer>
           <ListGroup>
-            {news?.reverse().map((item) => (
-              <ListGroup.Item key={item.news}>
-                <LinkContainer
-                  to={`/news/coin/${item.id}`}
-                  style={{ cursor: "pointer" }}
-                >
-                  <Row>
-                    <Col>{item.subject}</Col>
-                    <Col>{item.create_date.substring(0, 10)}</Col>
-                  </Row>
-                </LinkContainer>
-              </ListGroup.Item>
-            ))}
+            {news
+              ?.reverse()
+              .filter((item) => item.category == "코인")
+              .slice(0, 12)
+              .map((item) => (
+                <ListGroup.Item key={item.news}>
+                  <LinkContainer
+                    to={`/news/coin/${item.id}`}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <Row>
+                      <Col>{item.subject}</Col>
+                      <Col>{item.create_date.substring(0, 10)}</Col>
+                    </Row>
+                  </LinkContainer>
+                </ListGroup.Item>
+              ))}
           </ListGroup>
         </Col>
 
         <Col>
-          <h1>주식 뉴스</h1>
+          <LinkContainer to={"/news/stock"} style={{ cursor: "pointer" }}>
+            <h1>주식 뉴스</h1>
+          </LinkContainer>
           <ListGroup>
-            {news?.map((item) => (
-              <ListGroup.Item key={item.news}>
-                <Row>
-                  <Col>{item.subject}</Col>
-                  <Col>{item.create_date.substring(0, 10)}</Col>
-                </Row>
-              </ListGroup.Item>
-            ))}
+            {news
+              ?.filter((item) => item.category == "주식")
+              .slice(0, 12)
+              .map((item) => (
+                <ListGroup.Item key={item.news}>
+                  <LinkContainer
+                    to={`/news/coin/${item.id}`}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <Row>
+                      <Col>{item.subject}</Col>
+                      <Col>{item.create_date.substring(0, 10)}</Col>
+                    </Row>
+                  </LinkContainer>
+                </ListGroup.Item>
+              ))}
           </ListGroup>
         </Col>
       </Row>
       <Row>
         <Col>
-          <h1>코인 게시판</h1>
+          <LinkContainer to={"/news/coin"} style={{ cursor: "pointer" }}>
+            <h1>코인 게시판</h1>
+          </LinkContainer>
           <ListGroup>
-            {news?.map((item) => (
-              <ListGroup.Item key={item.news}>
-                <Row>
-                  <Col>{item.subject}</Col>
-                  <Col>{item.create_date.substring(0, 10)}</Col>
-                </Row>
-              </ListGroup.Item>
-            ))}
+            {news
+              ?.reverse()
+              .filter((item) => item.category == "코인")
+              .slice(0, 8)
+              .map((item) => (
+                <ListGroup.Item key={item.news}>
+                  <LinkContainer
+                    to={`/news/coin/${item.id}`}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <Row>
+                      <Col>{item.subject}</Col>
+                      <Col>{item.create_date.substring(0, 10)}</Col>
+                    </Row>
+                  </LinkContainer>
+                </ListGroup.Item>
+              ))}
           </ListGroup>
         </Col>
+
         <Col>
-          <h1>주식 게시판</h1>
+          <LinkContainer to={"/news/stock"} style={{ cursor: "pointer" }}>
+            <h1>주식 게시판</h1>
+          </LinkContainer>
           <ListGroup>
-            {news?.map((item) => (
-              <ListGroup.Item key={item.news}>
-                <Row>
-                  <Col>{item.subject}</Col>
-                  <Col>{item.create_date.substring(0, 10)}</Col>
-                </Row>
-              </ListGroup.Item>
-            ))}
-          </ListGroup>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <h1>동산 게시판</h1>
-          <ListGroup>
-            {news?.map((item) => (
-              <ListGroup.Item key={item.news}>
-                <Row>
-                  <Col>{item.subject}</Col>
-                  <Col>{item.create_date.substring(0, 10)}</Col>
-                </Row>
-              </ListGroup.Item>
-            ))}
-          </ListGroup>
-        </Col>
-        <Col>
-          <h1>부동산 게시판</h1>
-          <ListGroup>
-            {news?.map((item) => (
-              <ListGroup.Item key={item.news}>
-                <Row>
-                  <Col>{item.subject}</Col>
-                  <Col>{item.create_date.substring(0, 10)}</Col>
-                </Row>
-              </ListGroup.Item>
-            ))}
+            {news
+              ?.filter((item) => item.category == "주식")
+              .slice(0, 8)
+              .map((item) => (
+                <ListGroup.Item key={item.news}>
+                  <LinkContainer
+                    to={`/news/coin/${item.id}`}
+                    style={{ cursor: "pointer" }}
+                  >
+                    <Row>
+                      <Col>{item.subject}</Col>
+                      <Col>{item.create_date.substring(0, 10)}</Col>
+                    </Row>
+                  </LinkContainer>
+                </ListGroup.Item>
+              ))}
           </ListGroup>
         </Col>
       </Row>

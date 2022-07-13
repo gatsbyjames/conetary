@@ -16,10 +16,6 @@ function UserListScreen() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  console.log(typeof users);
-  console.log(users);
-  console.log("t");
-
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       dispatch(listUsers());

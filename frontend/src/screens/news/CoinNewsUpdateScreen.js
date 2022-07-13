@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../../components/FormContainer";
-import { useLocation, useNavigate, Link } from "react-router-dom";
-import { createNews } from "../../actions/newsActions";
+import { useLocation, useNavigate, Link, useParams } from "react-router-dom";
+import { createNews, updateNews } from "../../actions/newsActions";
 
-function NewsWrtieScreen() {
+function CoinNewsUpdateScreen() {
   const [subject, setSubject] = useState("");
   const [content, setContent] = useState("");
+  const category = "코인";
 
+  const { id } = useParams();
   const dispatch = useDispatch();
   const { search } = useLocation();
   const navigate = useNavigate();
@@ -16,14 +18,15 @@ function NewsWrtieScreen() {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const newsDetails = useSelector((state) => state.newsDetails);
+  const { error, loading, news } = newsDetails;
+
   const redirect = search ? search.split("=")[1] : "/";
-  console.log(subject);
-  console.log(content);
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    dispatch(createNews(subject, content));
+    dispatch(updateNews({ id: news.id, subject: subject, content: content }));
     navigate("/news/coin");
   };
 
@@ -67,4 +70,4 @@ function NewsWrtieScreen() {
   );
 }
 
-export default NewsWrtieScreen;
+export default CoinNewsUpdateScreen;

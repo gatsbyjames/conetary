@@ -25,7 +25,9 @@ import MallScreen from "./screens/mallScreens/MallScreen";
 import NewsScreen from "./screens/news/NewsScreen";
 import CoinNewsScreen from "./screens/news/CoinNewsScreen";
 import CoinNewsDetailScreen from "./screens/news/CoinNewsDetailScreen";
-import NewsWrtieScreen from "./screens/news/NewsWriteScreen";
+import CoinNewsWriteScreen from "./screens/news/CoinNewsWriteScreen";
+import CoinNewsUpdateScreen from "./screens/news/CoinNewsUpdateScreen";
+import StockNewsScreen from "./screens/news/StockNewsScreen";
 
 function App() {
   return (
@@ -46,7 +48,12 @@ function App() {
             <Route path="/news" element={<NewsScreen />} />
             <Route path="/news/coin" element={<CoinNewsScreen />} />
             <Route path="/news/coin/:id" element={<CoinNewsDetailScreen />} />
-            <Route path="/news/coin/write" element={<NewsWrtieScreen />} />
+            <Route
+              path="/news/coin/update/:id"
+              element={<CoinNewsUpdateScreen />}
+            />
+            <Route path="/news/coin/write" element={<CoinNewsWriteScreen />} />
+            <Route path="/news/stock" element={<StockNewsScreen />} />
             <Route path="/price" element={<PriceScreen />} />
             <Route path="/price/:id" element={<PriceDetailScreen />} />
             <Route path="/shipping" element={<ShippingScreen />} />

@@ -31,9 +31,11 @@ import {
 } from "./reducers/orderReducers";
 
 import {
-  coinNewsReducer,
+  newsDetailReducer,
   newsReducer,
   newsCreateReducer,
+  newsUpdateReducer,
+  newsDeleteReducer,
 } from "./reducers/newsReducers";
 
 const cartItemFromStorage = localStorage.getItem("cartItems")
@@ -86,8 +88,11 @@ const reducer = {
   orderDeliver: orderDeliverReducer,
 
   newsList: newsReducer,
-  coinNewsDetail: coinNewsReducer,
+  newsDetail: newsDetailReducer,
   newsCreate: newsCreateReducer,
+  newsUpdate: newsUpdateReducer,
+  newsDelete: newsDeleteReducer,
+  newsDetails: newsDetailReducer,
 };
 
 export default configureStore({

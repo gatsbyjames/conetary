@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import create_news, news_detail, news_list
+from .views import create_news, delete_news, news_detail, news_list, update_news
 
 # from rest_framework_simplejwt.views import (
 #     TokenObtainPairView,
@@ -9,6 +9,8 @@ from .views import create_news, news_detail, news_list
 urlpatterns = [
     path('', news_list, name='news-list'),
     path('post/<str:pk>/', news_detail, name='news-detail'),
-    path('create/', create_news, name='create-news')
+    path('create/', create_news, name='create-news'),
+    path('update/<str:pk>/', update_news, name='update-news'),
+    path('delete/<str:pk>/', delete_news, name='delete-news')
 
 ]
