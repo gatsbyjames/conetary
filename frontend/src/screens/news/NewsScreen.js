@@ -26,8 +26,7 @@ function NewsScreen() {
           </LinkContainer>
           <ListGroup>
             {news
-              ?.reverse()
-              .filter((item) => item.category == "코인")
+              ?.filter((item) => item.category == "코인")
               .slice(0, 12)
               .map((item) => (
                 <ListGroup.Item key={item.news}>
@@ -76,8 +75,7 @@ function NewsScreen() {
           </LinkContainer>
           <ListGroup>
             {news
-              ?.reverse()
-              .filter((item) => item.category == "코인")
+              ?.filter((item) => item.category == "코인 게시판")
               .slice(0, 8)
               .map((item) => (
                 <ListGroup.Item key={item.news}>
@@ -101,7 +99,7 @@ function NewsScreen() {
           </LinkContainer>
           <ListGroup>
             {news
-              ?.filter((item) => item.category == "주식")
+              ?.filter((item) => item.category == "주식 게시판")
               .slice(0, 8)
               .map((item) => (
                 <ListGroup.Item key={item.news}>

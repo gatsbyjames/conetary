@@ -32,7 +32,12 @@ export const productListReducer = (state = { products: [] }, action) => {
     // 얘 products: [] 에다가 ...state 넣어도 결과 같음
 
     case PRODUCT_LIST_SUCCESS:
-      return { loading: false, products: action.payload };
+      return {
+        loading: false,
+        products: action.payload.products,
+        page: action.payload.page,
+        pages: action.payload.pages,
+      };
 
     case PRODUCT_LIST_FAIL:
       return { loading: false, error: action.payload };

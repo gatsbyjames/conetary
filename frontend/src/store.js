@@ -36,6 +36,15 @@ import {
   newsCreateReducer,
   newsUpdateReducer,
   newsDeleteReducer,
+  newsLikeReducer,
+  newsDislikeReducer,
+  newsFactReducer,
+  newsFakeReducer,
+  newsUnlikeReducer,
+  newsUndislikeReducer,
+  newsUnfactReducer,
+  newsUnfakeReducer,
+  coinNewsReducer,
 } from "./reducers/newsReducers";
 
 const cartItemFromStorage = localStorage.getItem("cartItems")
@@ -49,6 +58,10 @@ const userInfoFromStorage = localStorage.getItem("userInfo")
 const shippingAddressFromStorage = localStorage.getItem("shippingAddress")
   ? JSON.parse(localStorage.getItem("shippingAddress"))
   : {};
+
+const likeFromStorage = localStorage.getItem("like")
+  ? JSON.parse(localStorage.getItem("cartItems"))
+  : [];
 
 // our data come from state
 
@@ -93,6 +106,15 @@ const reducer = {
   newsUpdate: newsUpdateReducer,
   newsDelete: newsDeleteReducer,
   newsDetails: newsDetailReducer,
+  newsLike: newsLikeReducer,
+  newsDislike: newsDislikeReducer,
+  newsFact: newsFactReducer,
+  newsFake: newsFakeReducer,
+  newsUnlike: newsUnlikeReducer,
+  newsUndislike: newsUndislikeReducer,
+  newsUnfact: newsUnfactReducer,
+  newsUnfake: newsUnfakeReducer,
+  coinNews: coinNewsReducer,
 };
 
 export default configureStore({

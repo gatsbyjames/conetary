@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { listNews } from "../../actions/newsActions";
+import { listCoinNews, listNews } from "../../actions/newsActions";
 import { LinkContainer } from "react-router-bootstrap";
 
 import { Row, Col, Button, ListGroup, Table } from "react-bootstrap";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
-
+import { coinNewsReducer } from "../../reducers/newsReducers";
+import { useLocation } from "react-router-dom";
+import Paginate from "../../components/Paginate";
 function NewListScreen() {
   const dispatch = useDispatch();
   const newsList = useSelector((state) => state.newsList);
-  const { laoding, error, news } = newsList;
+  const { laoding, error, news, page, pages } = newsList;
   console.log(news);
+  const { search } = useLocation();
+  let keyword = search;
 
   useEffect(() => {
-    dispatch(listNews());
-  }, []);
+    dispatch(listCoinNews());
+  }, [keyword]);
 
   const createNewsHandler = () => {
     console.log("hi");
@@ -52,8 +56,7 @@ function NewListScreen() {
 
           <tbody>
             {news
-              ?.reverse()
-              .slice(0, 25)
+              ?.slice(0, 25)
               .filter((item) => item.category == "코인")
               .map((item) => (
                 <LinkContainer
@@ -76,6 +79,7 @@ function NewListScreen() {
           <ListGroup></ListGroup>
         </Col>
       </Row>
+      <Paginate pages={pages} page={page} isAdmin={false} />
     </div>
   );
 }
