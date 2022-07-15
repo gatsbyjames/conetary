@@ -5,6 +5,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../actions/userActions";
 import { useNavigate } from "react-router-dom";
+import { Col, Row } from "react-bootstrap";
 
 import SearchBox from "./SearchBox";
 
@@ -72,19 +73,27 @@ function Header() {
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id="username">
                   <LinkContainer to="/profile">
-                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                    <NavDropdown.Item>프로필</NavDropdown.Item>
                   </LinkContainer>
 
                   <NavDropdown.Item onClick={logoutHandler}>
-                    Logout
+                    로그아웃
                   </NavDropdown.Item>
                 </NavDropdown>
               ) : (
-                <LinkContainer to="/login">
-                  <Nav.Link>
-                    <i className="fas fa-user"></i>Login
-                  </Nav.Link>
-                </LinkContainer>
+                <Nav>
+                  <LinkContainer to="/login">
+                    <Nav.Link>
+                      <i className="fas fa-user"></i>로그인
+                    </Nav.Link>
+                  </LinkContainer>
+
+                  <LinkContainer to="/register">
+                    <Nav.Link>
+                      <i className="fa-solid fa-id-card"></i>회원가입
+                    </Nav.Link>
+                  </LinkContainer>
+                </Nav>
               )}
 
               {userInfo && userInfo.isAdmin && (

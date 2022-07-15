@@ -50,7 +50,7 @@ function ProductListScreen() {
     if (successCreate) {
       navigate(`/admin/product/${createdProduct._id}/edit`);
     } else {
-      dispatch(listProducts());
+      dispatch(listProducts(keyword));
     }
   }, [
     dispatch,
@@ -138,7 +138,12 @@ function ProductListScreen() {
               ))}
             </tbody>
           </Table>
-          <Paginate pages={pages} page={page} isAdmin={true} />
+          <Paginate
+            pages={pages}
+            page={page}
+            isAdmin={true}
+            keyword={keyword}
+          />
         </div>
       )}
     </div>
