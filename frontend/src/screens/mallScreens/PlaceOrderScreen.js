@@ -67,8 +67,8 @@ function PlaceOrderScreen() {
         <Col md={8}>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h2>Shipping</h2>
-              <p>Shipping:</p>
+              <h2>배송 정보</h2>
+              <p>받으시는 곳:</p>
               {cart.shippingAddress.address}, {cart.shippingAddresscity}
               {"  "}
               {cart.shippingAddress.postalCode}
@@ -76,12 +76,12 @@ function PlaceOrderScreen() {
               {cart.shippingAddress.country}
             </ListGroup.Item>
             <ListGroup.Item>
-              <h2>Payment Method</h2>
+              <h2>결제 방법</h2>
               <p>Method:</p>
               {cart.paymentMethod}
             </ListGroup.Item>
             <ListGroup.Item>
-              <h2>Order Items</h2>
+              <h2>주문 상품</h2>
               {cart.cartItems.length === 0 ? (
                 <Message variant="info"> Your cart is empty</Message>
               ) : (
@@ -117,30 +117,30 @@ function PlaceOrderScreen() {
           <Card>
             <ListGroup variant="flush">
               <ListGroup.Item>
-                <h2>Order Summary</h2>
+                <h2>주문 요약</h2>
               </ListGroup.Item>
 
               <ListGroup.Item>
                 <Row>
-                  <Col>Item</Col>
+                  <Col>상품 가격</Col>
                   <Col>${cart.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Shipping</Col>
+                  <Col>배송비</Col>
                   <Col>${cart.shippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Tax</Col>
+                  <Col>세금</Col>
                   <Col>${cart.taxPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Total</Col>
+                  <Col>합계</Col>
                   <Col>${cart.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>

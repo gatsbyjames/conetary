@@ -2,6 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 
+import { Theme, makeStyles } from "@material-ui/core/styles";
+import { AppBar, Box, Tab, Tabs } from "@material-ui/core";
+
 function PriceScreen() {
   const [cryptoList, setCryptoList] = useState();
 

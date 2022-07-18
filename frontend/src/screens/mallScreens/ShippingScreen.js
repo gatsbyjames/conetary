@@ -27,7 +27,7 @@ function ShippingScreen() {
   return (
     <FormContainer>
       <CheckoutSteps step1 step2 />
-      <h1>Shipping</h1>
+      <h1>배송 받으시는 곳</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="address">
           <Form.Label>Address</Form.Label>
@@ -74,7 +74,7 @@ function ShippingScreen() {
         </Form.Group>
 
         <Button type="submit" variant="primary">
-          Continue
+          계속 하기
         </Button>
       </Form>
     </FormContainer>

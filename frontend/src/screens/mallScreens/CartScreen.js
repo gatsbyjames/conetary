@@ -48,10 +48,10 @@ function CartScreen() {
   return (
     <Row>
       <Col md={8}>
-        <h1>Shopping Cart</h1>
+        <h1>쇼핑 카트</h1>
         {cartItems.length === 0 ? (
           <Message variant="info">
-            Your cart is empty <Link to="/">go back</Link>
+            장바구니가 비어 있습니다.<Link to="/mall">채우러 가기</Link>
           </Message>
         ) : (
           <ListGroup variant="flush">
@@ -107,8 +107,8 @@ function CartScreen() {
         <Card>
           <ListGroup variant="flush">
             <h2>
-              Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
-              items
+              총 ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) 개의
+              상품
             </h2>
             $
             {cartItems
@@ -123,7 +123,7 @@ function CartScreen() {
               disabled={cartItems.length === 0}
               onClick={checkoutHanlder}
             >
-              Process To Checkout
+              주문하기
             </Button>
           </ListGroup.Item>
         </Card>

@@ -59,19 +59,19 @@ function OrderScreen() {
     <Message variant="danger">{error}</Message>
   ) : (
     <PayPalScriptProvider>
-      <h1>Order: {order._id} </h1>
+      <h1>주문번호: {order._id} </h1>
       <Row>
         <Col md={8}>
           <ListGroup variant="flush">
             <ListGroup.Item>
-              <h2>Shipping</h2>
-              <p>Name: {order.user.name}</p>
+              <h2>주문 정보</h2>
+              <p>닉네임: {order.user.name}</p>
               <p>
                 Email:{" "}
                 <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
               </p>
               <p>
-                Shipping:
+                배송지:
                 {order.shippingAddress.address}, {order.shippingAddress.city}
                 {"  "}
                 {order.shippingAddress.postalCode}
@@ -88,7 +88,7 @@ function OrderScreen() {
               )}
             </ListGroup.Item>
             <ListGroup.Item>
-              <h2>Payment Method</h2>
+              <h2>결제 방법</h2>
               <p>Method: {order.paymentMethod}</p>
               {order.isPaid ? (
                 <Message variant="success">Paid on {order.paidAt}</Message>
@@ -97,7 +97,7 @@ function OrderScreen() {
               )}
             </ListGroup.Item>
             <ListGroup.Item>
-              <h2>Order Items</h2>
+              <h2>주문하신 상품</h2>
               {order.orderItems.length === 0 ? (
                 <Message variant="info"> Order is empty</Message>
               ) : (
@@ -133,30 +133,30 @@ function OrderScreen() {
           <Card>
             <ListGroup variant="flush">
               <ListGroup.Item>
-                <h2>Order Summary</h2>
+                <h2>주문 요약</h2>
               </ListGroup.Item>
 
               <ListGroup.Item>
                 <Row>
-                  <Col>Item</Col>
+                  <Col>상품 가격</Col>
                   <Col>${order.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Shipping</Col>
+                  <Col>배송비</Col>
                   <Col>${order.shippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Tax</Col>
+                  <Col>부가세</Col>
                   <Col>${order.taxPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Total</Col>
+                  <Col>합계</Col>
                   <Col>${order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>

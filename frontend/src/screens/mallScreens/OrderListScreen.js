@@ -27,7 +27,7 @@ function OrderListScreen() {
 
   return (
     <div>
-      <h1>Orders</h1>
+      <h1>주문 리스트</h1>
       {loading ? (
         <Loader />
       ) : error ? (

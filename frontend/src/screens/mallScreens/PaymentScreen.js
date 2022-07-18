@@ -30,7 +30,7 @@ function PaymentScreen() {
 
       <Form onSubmit={submitHandler}>
         <Form.Group>
-          <Form.Label as="legend">Select Method</Form.Label>
+          <Form.Label as="legend">결제 방법</Form.Label>
           <Col>
             <Form.Check
               type="radio"
@@ -44,7 +44,7 @@ function PaymentScreen() {
         </Form.Group>
 
         <Button type="submit" variant="primary">
-          Continue
+          계속 하기
         </Button>
       </Form>
     </FormContainer>
