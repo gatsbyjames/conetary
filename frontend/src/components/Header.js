@@ -71,7 +71,10 @@ function Header() {
 
             <Nav>
               {userInfo ? (
-                <NavDropdown title={userInfo.name} id="username">
+                <NavDropdown
+                  title={userInfo.name.substring(0, 10)}
+                  id="username"
+                >
                   <LinkContainer to="/profile">
                     <NavDropdown.Item>프로필</NavDropdown.Item>
                   </LinkContainer>

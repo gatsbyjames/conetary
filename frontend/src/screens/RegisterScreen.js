@@ -32,8 +32,8 @@ function RegisterScreen() {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    if (password != confirmPassword) {
-      setMessage("Password does not match");
+    if (password !== confirmPassword) {
+      setMessage("입력하신 비밀번호가 같지 않습니다");
     } else {
       dispatch(register(name, email, password));
     }
@@ -41,66 +41,66 @@ function RegisterScreen() {
 
   return (
     <FormContainer>
-      <h1>Sign In</h1>
+      <h1>회원가입</h1>
       {message && <Message variant="danger">{message}</Message>}
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="name">
-          <Form.Label>Name</Form.Label>
+          <Form.Label>닉네임</Form.Label>
           <Form.Control
             // conrol 이라고 쓰니까 element type is invalid 라고뜸
             required
             type="name"
-            placeholder="Enter name"
+            placeholder="닉네임 입력"
             value={name || ""}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value.trim())}
           ></Form.Control>
         </Form.Group>
 
         <Form.Group controlId="email">
-          <Form.Label>Email Address</Form.Label>
+          <Form.Label>이메일</Form.Label>
           <Form.Control
             required
             type="email"
-            placeholder="Enter Email"
+            placeholder="이메일 입력"
             value={email || ""}
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
         <Form.Group controlId="password">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>비밀번호</Form.Label>
           <Form.Control
             required
             type="password"
-            placeholder="Enter Password"
+            placeholder="비밀번호 입력"
             value={password || ""}
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
         <Form.Group controlId="passwordConfirm">
-          <Form.Label>Confirm Password</Form.Label>
+          <Form.Label>비밀번호 확인</Form.Label>
           <Form.Control
             required
             type="password"
-            placeholder="Confirm Password"
+            placeholder="비밀번호 확인"
             value={confirmPassword || ""}
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
 
         <Button type="submit" variant="primary">
-          Register
+          가입하기
         </Button>
       </Form>
 
       <Row className="py-3">
         <Col>
-          Have an Account?{" "}
+          이미 계정이 있으신가요??{" "}
           <Link to={redirect ? `/login?redirect=${redirect}` : "/login"}>
-            Log in
+            로그인 하러가기
           </Link>
         </Col>
       </Row>

@@ -36,6 +36,11 @@ class MyTokenObtainPairView(TokenObtainPairView):
 def registerUser(request):
     data = request.data
     try:
+
+        if User.objects.filter(first_name=data['name']).exists():
+            message = {'detail' : '이미 존재하는 닉네임 입니다'}
+            return Response(message, status=status.HTTP_400_BAD_REQUEST)
+        
         user = User.objects.create( 
             first_name=data['name'],
             username= data['email'],
@@ -46,12 +51,13 @@ def registerUser(request):
         serializer = UserSerializerWithToken(user, many=False)
         return Response(serializer.data)
     except:
-        message = {'details': 'User with this email already exists'}
+        message = {'detail': '이미 존재하는 이메일 입니다'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def updateUserProfile(request):
+
     user = request.user
     serializer = UserSerializerWithToken(user, many=False)
 
@@ -59,9 +65,14 @@ def updateUserProfile(request):
     user.first_name = data['name']
     user.username = data['email']
     user.email = data['email']
+    if User.objects.filter(first_name=data['name']).exists():
+        message = {'detail': '이미 존재하는 닉네임 입니다'}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)    
 
     if data['password'] != '':
         user.password = make_password(data['password'])
+
+
 
     user.save()
 

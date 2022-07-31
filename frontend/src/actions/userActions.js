@@ -79,7 +79,7 @@ export const logout = () => (dispatch) => {
 export const register = (name, email, password) => async (dispatch) => {
   try {
     dispatch({
-      type: USER_UPDATE_PROFILE_REQUEST,
+      type: USER_REGISTER_REQUEST,
     });
 
     const config = {
@@ -107,7 +107,7 @@ export const register = (name, email, password) => async (dispatch) => {
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
     dispatch({
-      type: USER_UPDATE_PROFILE_FAIL,
+      type: USER_REGISTER_FAIL,
       payload:
         error.response && error.response.data.detail
           ? error.response.data.detail

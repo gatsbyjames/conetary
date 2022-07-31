@@ -26,7 +26,7 @@ function ProfileScreen() {
   const { userInfo } = userLogin;
 
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
-  const { success } = userUpdateProfile;
+  const { success, error: errorUpdate } = userUpdateProfile;
   // 진심 success 이세기 뭔지 잘 모르겟음
 
   const orderListMy = useSelector((state) => state.orderListMy);
@@ -51,7 +51,7 @@ function ProfileScreen() {
     e.preventDefault();
 
     if (password != confirmPassword) {
-      setMessage("Password does not match");
+      setMessage("입력하신 비밀번호가 같지 않습니다.");
     } else {
       dispatch(
         updateUserProfile({
@@ -68,36 +68,25 @@ function ProfileScreen() {
   return (
     <Row>
       <Col md={3}>
-        <h2>User Profile</h2>
+        <h2>프로필</h2>
 
         {message && <Message variant="danger">{message}</Message>}
-        {error && <Message variant="danger">{error}</Message>}
+        {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
         {loading && <Loader />}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="name">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>닉네임</Form.Label>
             <Form.Control
               required
               type="name"
               placeholder="Enter name"
               value={name}
-              onChange={(e) => setName(e.target.value)}
-            ></Form.Control>
-          </Form.Group>
-
-          <Form.Group controlId="email">
-            <Form.Label>Email Address</Form.Label>
-            <Form.Control
-              required
-              type="email"
-              placeholder="Enter Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setName(e.target.value.trim())}
             ></Form.Control>
           </Form.Group>
 
           <Form.Group controlId="password">
-            <Form.Label>Password</Form.Label>
+            <Form.Label>비밀번호</Form.Label>
             <Form.Control
               type="password"
               placeholder="Enter Password"
@@ -107,7 +96,7 @@ function ProfileScreen() {
           </Form.Group>
 
           <Form.Group controlId="passwordConfirm">
-            <Form.Label>Confirm Password</Form.Label>
+            <Form.Label>비밀번호 확인</Form.Label>
             <Form.Control
               type="password"
               placeholder="Confirm Password"
@@ -117,12 +106,12 @@ function ProfileScreen() {
           </Form.Group>
 
           <Button type="submit" variant="primary">
-            Update
+            수정하기
           </Button>
         </Form>
       </Col>
       <Col md={9}>
-        <h2>My orders</h2>
+        <h2>주문 리스트</h2>
         {loadingOrders ? (
           <Loader />
         ) : errorOrders ? (
@@ -131,11 +120,11 @@ function ProfileScreen() {
           <Table striped responsive className="table-sm">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Date</th>
-                <th>Total</th>
-                <th>Paid</th>
-                <th>Delivered</th>
+                <th>주문번호</th>
+                <th>날짜</th>
+                <th>총 금액</th>
+                <th>결제 여부</th>
+                <th>배송 확인</th>
                 <th></th>
               </tr>
             </thead>
